@@ -1,0 +1,260 @@
+
+    <div class="container py-5">
+        <!-- Заголовок -->
+        <div class="row mb-5">
+            <div class="col">
+                <h1 class="display-4 fw-bold text-dark mb-3">
+                    <i class="fas fa-brain text-primary me-3"></i>Dashboard
+                </h1>
+                <p class="lead text-muted">Monitor and manage your neural network models</p>
+            </div>
+        </div>
+        
+        <!-- Статистика -->
+        <div class="row mb-5" id="stats-container">
+            <div class="col-md-3">
+                <div class="glass-card p-4 text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3 id="total-models" class="fw-bold">0</h3>
+                    <p class="text-muted mb-0">Total Models</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="glass-card p-4 text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 id="trained-models" class="fw-bold">0</h3>
+                    <p class="text-muted mb-0">Trained Models</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="glass-card p-4 text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 id="avg-accuracy" class="fw-bold">0%</h3>
+                    <p class="text-muted mb-0">Avg Accuracy</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="glass-card p-4 text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 id="active-training" class="fw-bold">0</h3>
+                    <p class="text-muted mb-0">Active Training</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Быстрое создание моделей -->
+        <div class="row mb-5">
+            <div class="col">
+                <div class="glass-card p-4">
+                    <h4 class="fw-bold mb-4">
+                        <i class="fas fa-rocket text-primary me-2"></i>Quick Start
+                    </h4>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <div class="model-card card border-0 shadow-sm h-100">
+                                <div class="card-body text-center">
+                                    <div class="mb-3">
+                                        <i class="fas fa-image fa-3x text-primary"></i>
+                                    </div>
+                                    <h5 class="card-title">Image Classification</h5>
+                                    <p class="card-text text-muted small">CNN for image recognition tasks</p>
+                                    <button class="btn btn-primary w-100" onclick="createModelFromTemplate('cnn_image_classifier')">
+                                        <i class="fas fa-plus me-2"></i>Create CNN Model
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="model-card card border-0 shadow-sm h-100">
+                                <div class="card-body text-center">
+                                    <div class="mb-3">
+                                        <i class="fas fa-table fa-3x text-success"></i>
+                                    </div>
+                                    <h5 class="card-title">Tabular Data</h5>
+                                    <p class="card-text text-muted small">MLP for structured data</p>
+                                    <button class="btn btn-success w-100" onclick="createModelFromTemplate('mlp_tabular_classifier')">
+                                        <i class="fas fa-plus me-2"></i>Create MLP Model
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="model-card card border-0 shadow-sm h-100">
+                                <div class="card-body text-center">
+                                    <div class="mb-3">
+                                        <i class="fas fa-file-alt fa-3x text-warning"></i>
+                                    </div>
+                                    <h5 class="card-title">Text Data</h5>
+                                    <p class="card-text text-muted small">LSTM for text classification</p>
+                                    <button class="btn btn-warning w-100" onclick="createModelFromTemplate('lstm_text_classifier')">
+                                        <i class="fas fa-plus me-2"></i>Create LSTM Model
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Последние модели -->
+        <div class="row">
+            <div class="col">
+                <div class="glass-card p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h4 class="fw-bold mb-0">
+                            <i class="fas fa-history text-primary me-2"></i>Recent Models
+                        </h4>
+                        <button class="btn btn-outline-primary" onclick="navigateTo('models')">
+                            View All <i class="fas fa-arrow-right ms-2"></i>
+                        </button>
+                    </div>
+                    <div id="recent-models">
+                        <div class="text-center py-5">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Инициализация дашборда
+        async function initDashboard() {
+            await loadDashboardStats();
+            await loadRecentModels();
+        }
+        
+        // Загрузка статистики
+        async function loadDashboardStats() {
+            try {
+                const models = await loadModels();
+                const totalModels = models.length;
+                const trainedModels = models.filter(m => m.status === 'trained').length;
+                const avgAccuracy = models.filter(m => m.accuracy)
+                    .reduce((acc, m) => acc + m.accuracy, 0) / trainedModels || 0;
+                const activeTraining = models.filter(m => m.status === 'training').length;
+                
+                document.getElementById('total-models').textContent = totalModels;
+                document.getElementById('trained-models').textContent = trainedModels;
+                document.getElementById('avg-accuracy').textContent = (avgAccuracy * 100).toFixed(1) + '%';
+                document.getElementById('active-training').textContent = activeTraining;
+                
+            } catch (error) {
+                console.error('Error loading stats:', error);
+            }
+        }
+        
+        // Загрузка последних моделей
+        async function loadRecentModels() {
+            try {
+                const models = await loadModels();
+                const recentModels = models.slice(0, 5);
+                
+                if (recentModels.length === 0) {
+                    document.getElementById('recent-models').innerHTML = `
+                        <div class="text-center py-5">
+                            <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
+                            <h5 class="text-muted">No models yet</h5>
+                            <p class="text-muted">Create your first model using Quick Start</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                let html = '<div class="row">';
+                recentModels.forEach(model => {
+                    const statusClass = `status-${model.status}`;
+                    const accuracy = model.accuracy ? (model.accuracy * 100).toFixed(1) + '%' : 'N/A';
+                    const date = new Date(model.created_at).toLocaleDateString();
+                    
+                    html += `
+                        <div class="col-md-6 mb-3">
+                            <div class="card model-card shadow-sm h-100">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start mb-3">
+                                        <div>
+                                            <h5 class="card-title mb-1">${model.name}</h5>
+                                            <span class="badge bg-secondary">${model.model_type}</span>
+                                            <span class="badge ${statusClass} ms-2">${model.status}</span>
+                                        </div>
+                                        <button class="btn btn-sm btn-outline-primary" onclick="viewModel('${model.id}')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <small class="text-muted">Accuracy</small>
+                                            <div class="fw-bold">${accuracy}</div>
+                                        </div>
+                                        <div class="col-6">
+                                            <small class="text-muted">Created</small>
+                                            <div class="fw-bold">${date}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                html += '</div>';
+                
+                document.getElementById('recent-models').innerHTML = html;
+                
+            } catch (error) {
+                console.error('Error loading recent models:', error);
+                document.getElementById('recent-models').innerHTML = `
+                    <div class="alert alert-danger">Error loading recent models</div>
+                `;
+            }
+        }
+        
+        // Создание модели из шаблона
+        async function createModelFromTemplate(templateId) {
+            try {
+                showLoading('#recent-models');
+                
+                const templateNames = {
+                    'cnn_image_classifier': 'CNN Image Classifier',
+                    'mlp_tabular_classifier': 'MLP Tabular Classifier', 
+                    'lstm_text_classifier': 'LSTM Text Classifier',
+                    'regression_model': 'Regression Model'
+                };
+                
+                const modelName = templateNames[templateId] || 'New Model';
+                
+                const response = await axios.post('/api/models', {
+                    name: modelName,
+                    model_type: templateId.includes('cnn') ? 'CNN' : 
+                               templateId.includes('lstm') ? 'LSTM' : 'MLP',
+                    template_id: templateId
+                });
+                
+                showAlert(`Model "${modelName}" created successfully!`, 'success');
+                await loadDashboardStats();
+                await loadRecentModels();
+                
+            } catch (error) {
+                console.error('Error creating model:', error);
+                showAlert(`Error creating model: ${error.response?.data?.detail || error.message}`, 'danger');
+            }
+        }
+        
+        // Просмотр модели
+        function viewModel(modelId) {
+            navigateTo('models');
+            // Здесь можно добавить логику для выделения конкретной модели
+        }
+    </script>
+    

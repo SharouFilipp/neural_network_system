@@ -1,0 +1,243 @@
+{
+  "models": {
+    "1": {
+      "id": "1",
+      "name": "Example CNN Model",
+      "model_type": "CNN",
+      "created_at": "2025-12-14T20:17:03.327132",
+      "trained_at": "2025-12-14T20:17:03.327287",
+      "accuracy": 0.92,
+      "status": "trained",
+      "file_path": "data\\models\\1.pkl"
+    },
+    "2": {
+      "id": "2",
+      "name": "Example MLP Model",
+      "model_type": "MLP",
+      "created_at": "2025-12-14T20:17:03.328745",
+      "trained_at": "2025-12-14T20:17:03.328798",
+      "accuracy": null,
+      "status": "not_trained",
+      "file_path": "data\\models\\2.pkl"
+    },
+    "4": {
+      "id": "4",
+      "name": "MLP Model",
+      "model_type": "MLP",
+      "created_at": "2025-12-14T20:27:14.040706",
+      "trained_at": "2025-12-14T20:27:14.040807",
+      "accuracy": null,
+      "status": "not_trained",
+      "file_path": "data\\models\\4.pkl"
+    },
+    "5": {
+      "id": "5",
+      "name": "My Neural Network",
+      "model_type": "CNN",
+      "created_at": "2025-12-14T20:37:43.833177",
+      "trained_at": "2025-12-14T20:37:43.833279",
+      "accuracy": null,
+      "status": "failed",
+      "file_path": "data\\models\\5.pkl"
+    },
+    "7": {
+      "id": "7",
+      "name": "My Neural Network",
+      "model_type": "CNN",
+      "created_at": "2025-12-14T20:55:50.530464",
+      "trained_at": "2025-12-14T20:55:50.530587",
+      "accuracy": 0.71,
+      "status": "trained",
+      "file_path": "data\\models\\7.pkl",
+      "loss": 1.1623286519731795,
+      "training_time": 2.455000400543213,
+      "dataset_size": 1000,
+      "dataset_name": "mnist"
+    },
+    "8": {
+      "id": "8",
+      "name": "My Neural Network",
+      "model_type": "CNN",
+      "created_at": "2025-12-14T20:55:50.530464",
+      "trained_at": "2025-12-14T20:55:50.530587",
+      "accuracy": 0.71,
+      "status": "trained",
+      "file_path": "data\\models\\8.pkl"
+    },
+    "9": {
+      "id": "9",
+      "name": "My Neural Network",
+      "model_type": "LSTM",
+      "created_at": "2025-12-14T20:56:21.028102",
+      "trained_at": "2025-12-14T20:56:21.028160",
+      "accuracy": 0.4666666666666666,
+      "status": "trained",
+      "file_path": "data\\models\\9.pkl",
+      "loss": 1.0158042907714844,
+      "training_time": 1.228273868560791,
+      "dataset_size": 120,
+      "dataset_name": "iris"
+    },
+    "10": {
+      "id": "10",
+      "name": "My Neural Network",
+      "model_type": "LSTM",
+      "created_at": "2025-12-14T20:56:21.028102",
+      "trained_at": "2025-12-14T20:56:21.028160",
+      "accuracy": 0.4666666666666666,
+      "status": "trained",
+      "file_path": "data\\models\\10.pkl"
+    },
+    "11": {
+      "id": "11",
+      "name": "My Neural Network",
+      "model_type": "LSTM",
+      "created_at": "2025-12-14T20:56:48.199831",
+      "trained_at": "2025-12-14T20:56:48.199938",
+      "accuracy": 0.7,
+      "status": "trained",
+      "file_path": "data\\models\\11.pkl",
+      "loss": 0.776040256023407,
+      "training_time": 0.11651754379272461,
+      "dataset_size": 120,
+      "dataset_name": "iris"
+    },
+    "12": {
+      "id": "12",
+      "name": "My Neural Network",
+      "model_type": "LSTM",
+      "created_at": "2025-12-14T20:56:48.199831",
+      "trained_at": "2025-12-14T20:56:48.199938",
+      "accuracy": 0.7,
+      "status": "trained",
+      "file_path": "data\\models\\12.pkl"
+    },
+    "13": {
+      "id": "13",
+      "name": "My Neural Network",
+      "model_type": "LSTM",
+      "created_at": "2025-12-14T20:57:11.522926",
+      "trained_at": "2025-12-14T20:57:11.523008",
+      "accuracy": 0.805,
+      "status": "trained",
+      "file_path": "data\\models\\13.pkl",
+      "loss": 0.6261302317891803,
+      "training_time": 1.9732959270477295,
+      "dataset_size": 1000,
+      "dataset_name": "mnist"
+    },
+    "14": {
+      "id": "14",
+      "name": "My Neural Network",
+      "model_type": "LSTM",
+      "created_at": "2025-12-14T20:57:11.522926",
+      "trained_at": "2025-12-14T20:57:11.523008",
+      "accuracy": 0.805,
+      "status": "trained",
+      "file_path": "data\\models\\14.pkl"
+    },
+    "15": {
+      "id": "15",
+      "name": "My",
+      "model_type": "LSTM",
+      "created_at": "2025-12-14T20:58:02.657609",
+      "trained_at": "2025-12-14T20:58:02.657797",
+      "accuracy": 0.5,
+      "status": "trained",
+      "file_path": "data\\models\\15.pkl",
+      "loss": 0.6976313165255955,
+      "training_time": 0.3700528144836426,
+      "dataset_size": 1000,
+      "dataset_name": "cifar10"
+    },
+    "16": {
+      "id": "16",
+      "name": "My",
+      "model_type": "LSTM",
+      "created_at": "2025-12-14T20:58:02.657609",
+      "trained_at": "2025-12-14T20:58:02.657797",
+      "accuracy": 0.5,
+      "status": "trained",
+      "file_path": "data\\models\\16.pkl"
+    },
+    "17": {
+      "id": "17",
+      "name": "123",
+      "model_type": "CNN",
+      "created_at": "2025-12-14T21:36:35.425097",
+      "trained_at": "2025-12-14T21:36:35.425298",
+      "accuracy": null,
+      "status": "not_trained",
+      "file_path": "data\\models\\17.pkl"
+    },
+    "18": {
+      "id": "18",
+      "name": "123",
+      "model_type": "CNN",
+      "created_at": "2025-12-14T21:36:50.818082",
+      "trained_at": "2025-12-14T21:36:50.818241",
+      "accuracy": 0.85,
+      "status": "trained",
+      "file_path": "data\\models\\18.pkl",
+      "loss": 0.49650730405535015,
+      "training_time": 5.051839828491211,
+      "dataset_size": 1000,
+      "dataset_name": "mnist"
+    },
+    "19": {
+      "id": "19",
+      "name": "123",
+      "model_type": "CNN",
+      "created_at": "2025-12-14T21:36:50.818082",
+      "trained_at": "2025-12-14T21:36:50.818241",
+      "accuracy": 0.85,
+      "status": "trained",
+      "file_path": "data\\models\\19.pkl"
+    },
+    "20": {
+      "id": "20",
+      "name": "1",
+      "model_type": "CNN",
+      "created_at": "2025-12-14T21:38:16.126849",
+      "trained_at": "2025-12-14T21:38:16.127007",
+      "accuracy": null,
+      "status": "failed",
+      "file_path": "data\\models\\20.pkl"
+    },
+    "21": {
+      "id": "21",
+      "name": "1",
+      "model_type": "CNN",
+      "created_at": "2025-12-14T21:38:47.172591",
+      "trained_at": "2025-12-14T21:38:47.172811",
+      "accuracy": 0.97,
+      "status": "trained",
+      "file_path": "data\\models\\21.pkl",
+      "loss": 0.17854291732822145,
+      "training_time": 5.32518196105957,
+      "dataset_size": 1000,
+      "dataset_name": "mnist"
+    },
+    "22": {
+      "id": "22",
+      "name": "1",
+      "model_type": "CNN",
+      "created_at": "2025-12-14T21:38:47.172591",
+      "trained_at": "2025-12-14T21:38:47.172811",
+      "accuracy": 0.97,
+      "status": "trained",
+      "file_path": "data\\models\\22.pkl"
+    },
+    "23": {
+      "id": "23",
+      "name": "12312412",
+      "model_type": "CNN",
+      "created_at": "2025-12-14T21:40:01.745975",
+      "trained_at": "2025-12-14T21:40:01.746149",
+      "accuracy": null,
+      "status": "not_trained",
+      "file_path": "data\\models\\23.pkl"
+    }
+  },
+  "next_id": 24
+}
