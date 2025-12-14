@@ -222,31 +222,20 @@ class AuthRepository:
 
 ## 🖥️ Интерфейс системы
 
-### 1. Выбор роли
-Экран входа, позволяющий выбрать режим работы: Трейдер, Аналитик или Управляющий.
-
-![role_select.png](screenshots/role_select.png)
+### 1. Экран входа
 
 
-### 2. 📊 Панель управления (Dashboard)
-Главный экран с котировками в реальном времени, графиком с ML-предсказаниями, торговыми сигналами и оценкой рисков.
+![auth.png](screen/auth.png)
 
-![img_1.png](screenshots/img_1.png)
-![img_2.png](screenshots/img_2.png)
 
-### 3. 📈 Аналитика (Analytics)
-Детальный анализ с возможностью выбора конкретной математической модели (ARIMA, Holt-Winters, MA) и просмотра доверительных интервалов.
+### 2. Главный экран
+![main.png](screen/main.png)
 
-![img_3.png](screenshots/img_3.png)
 
-### 4. 📋 Отчёты (Reports)
-Генерация PDF и CSV отчётов по портфелю и стратегиям.
+### 3. Обучение
 
-![img_4.png](screenshots/img_4.png)
+![train.png](screen/train.png)
 
-### 5. 💼 Портфель (Portfolio)
-Инструменты управления активами: добавление/удаление позиций, ребалансировка и отслеживание P&L.
-
-![img_5.png](screenshots/img_5.png)
-
+### 4. Результаты
+![result.png](screen/result.png)
 ---
